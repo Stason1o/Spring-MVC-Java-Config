@@ -1,0 +1,9 @@
+com\endava\spring\configuration\SpringMvcInitializer.class
+com\endava\spring\service\UserService.class
+com\endava\spring\model\User.class
+com\endava\spring\dao\impl\UserDaoImpl.class
+com\endava\spring\dao\UserDao.class
+com\endava\spring\configuration\DataBaseConfiguration.class
+com\endava\spring\controller\HelloWorldController.class
+com\endava\spring\service\impl\UserServiceImpl.class
+com\endava\spring\configuration\HelloWorldConfiguration.class
