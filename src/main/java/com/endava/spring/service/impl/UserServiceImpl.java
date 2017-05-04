@@ -1,23 +1,41 @@
 package com.endava.spring.service.impl;
 
 import com.endava.spring.dao.UserDao;
+import com.endava.spring.model.User;
 import com.endava.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by sbogdanschi on 25/04/2017.
  */
 @Service("userService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
 
-    public boolean isValidUser(String username, String password) throws SQLException {
-        System.out.println("in UserServiceImpl.isValidUser");
-        return userDao.isValidUser(username, password);
+    @Override
+    public List<User> listUsers() {
+        return userDao.listUsers();
+    }
+
+    @Override
+    public User findByUserName(String username){
+        return userDao.findByUserName(username);
+    }
+
+    @Override
+    public void saveUser(User user) {
+        userDao.saveUser(user);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return null;
     }
 }
