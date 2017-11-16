@@ -1,5 +1,7 @@
 package com.endava.spring.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +39,12 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @Column(name = "image")
+    private String image;
+
+    @Transient
+    private MultipartFile userImage;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "id_user"),
@@ -123,5 +131,21 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public MultipartFile getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(MultipartFile userImage) {
+        this.userImage = userImage;
     }
 }

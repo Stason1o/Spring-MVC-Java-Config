@@ -13,6 +13,8 @@
 </head>
 <body>
 <p>Hello world! ${username}</p>
+<p>After image</p>
+<p><img alt="img" src="data:image/jpg;base64,${user.image}"/> </p>
 <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

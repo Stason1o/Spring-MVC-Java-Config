@@ -20,9 +20,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @EnableWebSecurity
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private final UserDetailsService userDetailsService;
+
     @Autowired
-    @Qualifier("userDetailsService")
-    private UserDetailsService userDetailsService;
+    public SpringSecurityConfiguration(@Qualifier("userDetailsService") UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder managerBuilder) throws Exception {
@@ -44,6 +47,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/welcome");
+
+        http.csrf().disable();
     }
 
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)

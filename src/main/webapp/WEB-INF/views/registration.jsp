@@ -14,7 +14,7 @@
 </head>
 <body>
 <c:url var="addAction" value="/registration"/>
-<form:form action="${addAction}" commandName="user">
+<form:form action="${addAction}" commandName="user" enctype="multipart/form-data">
 
     <form:label path="firstName">Enter your First Name</form:label>
     <form:input id="firstName" name="firstName" path="firstName" />
@@ -46,8 +46,14 @@
     <form:errors path="email"/>
     <br>
 
+    <form:label path="image">Please enter your image</form:label>
+    <form:input type="file" id="userImage" name="userImage" path="userImage"/>
+    <form:errors path="userImage"/>
+    <br>
+
     <form:input type="hidden" id="enabled" value="1" name="enabled" path="enabled"/>
     <input type="submit" value="Submit" />
 </form:form>
+
 </body>
 </html>
